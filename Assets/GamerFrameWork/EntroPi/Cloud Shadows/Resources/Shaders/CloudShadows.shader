@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Hidden/EntroPi/CloudShadow"
 {
 	Properties
@@ -46,7 +48,7 @@ Shader "Hidden/EntroPi/CloudShadow"
 	VertexOut Vert (appdata_t v)
 	{
 		VertexOut o;
-		o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+		o.vertex = UnityObjectToClipPos(v.vertex);
 		o.texcoord = v.texcoord.xy;
 
 		o.texcoordClouds = TRANSFORM_TEX(v.texcoord.xy, _LayerTex);
